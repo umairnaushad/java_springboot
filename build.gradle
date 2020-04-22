@@ -1,0 +1,20 @@
+
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+}
+
+repositories {
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.2.6.RELEASE'
+}
+
+group = 'org.springboot.java'
+version = '1.0.1'
+
+sourceCompatibility = '1.8'
+
+apply plugin: 'war'
