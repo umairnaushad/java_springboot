@@ -1,7 +1,11 @@
-https://www.codejava.net/frameworks/spring-boot/spring-boot-hello-world-example
+'https://www.codejava.net/frameworks/spring-boot/spring-boot-hello-world-example
 
-Compile:
+Maven:
 mvn spring-boot:run
-
-Package:
 mvn package
+
+Gradle:
+gradle build
+
+
+https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/
