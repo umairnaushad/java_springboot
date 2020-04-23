@@ -1,20 +1,23 @@
-
-plugins {
-    id 'java'
-    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
-}
-
-repositories {
-    mavenLocal()
-}
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.2.6.RELEASE'
-}
+apply plugin: 'java'
+apply plugin: 'maven'
 
 group = 'org.springboot.java'
-version = '1.0.1'
+version = '1.0.0'
 
-sourceCompatibility = '1.8'
+description = """"""
 
-apply plugin: 'war'
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+        
+     maven { url "https://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.2.6.RELEASE'
+}
