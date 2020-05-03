@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS MAVEN_BUILD
+FROM ubuntu:20.04
 
 # Install java and maven
 RUN apt-get update && apt-get install -y \
