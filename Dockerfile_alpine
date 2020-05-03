@@ -1,0 +1,30 @@
+# Linux alpine distribution
+FROM alpine:3.9.6
+
+LABEL maintainer=umairnaushad
+
+# Install java and maven
+RUN apk update && apk --no-cache add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
+    openjdk11 \ 
+    maven
+
+# Print java and maven versions
+RUN java -version && mvn -version
+
+# Set home and working directory
+ENV HOME /build/app
+WORKDIR /build/app
+
+# COpy source code
+COPY pom.xml .
+COPY src ./src/
+
+# Build code
+RUN mvn package
+RUN ls target/
+
+# Execute app
+ENTRYPOINT ["java", "-jar", "target/spring-hello-1.0.0.jar"]
+
+#EXPOSE port
+EXPOSE 8080
