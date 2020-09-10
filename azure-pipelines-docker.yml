@@ -14,7 +14,7 @@ variables:
   imageRepository: 'java-app'
   containerRegistry: 'umairacr.azurecr.io'
   dockerfilePath: 'Dockerfile_multibuild'
-  tag: '$(Build.Repository.Name)_$(Build.BuildId)'
+  tag: 'image_$(Build.BuildId)'
   
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
