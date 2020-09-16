@@ -20,6 +20,14 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '**/jacoco.xml'
+    pathToSources: 'src/main/java'
+    reportDirectory: 'target/jacoco-report'
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(agent.builddirectory)'
