@@ -6,8 +6,9 @@ import static org.junit.Assert.assertEquals;
 public class SpringHelloTest {
 
     @Test
-    public void multiplicationOfZeroIntegersShouldReturnZero() {
-        assertEquals(0, 0);
+    public void Test1() {
+        SpringHello obj = new SpringHello();
+        assertEquals("Hello Umair Naushad!", obj.home());
     }
 
 }
