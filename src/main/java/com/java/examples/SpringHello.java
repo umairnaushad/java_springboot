@@ -1,5 +1,5 @@
-//package net.codejava;
- 
+package com.java.examples;
+
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 import org.springframework.web.bind.annotation.*;
@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @EnableAutoConfiguration
 public class SpringHello {
- 
+
     @RequestMapping("/")
     String home() {
         return "Hello Umair Naushad!";
     }
- 
+
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SpringHello.class, args);
     }
- 
+
 }
