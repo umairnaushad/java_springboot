@@ -7,19 +7,11 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 RUN mvn package
-RUN  mkdir dockerVolume
-RUN pwd
-RUN ls
-    
-RUN cp target/ /dockerVolume/testResults
-VOLUME /dockerVolume
 
+FROM openjdk:15-jdk-alpine
 
+WORKDIR /app
 
-#FROM openjdk:15-jdk-alpine
+COPY --from=MAVEN_BUILDER /build/target/spring-hello-1.0.0.jar /app/
 
-#WORKDIR /app
-
-#COPY --from=MAVEN_BUILDER /build/target/spring-hello-1.0.0.jar /app/
-
-#ENTRYPOINT ["java", "-jar", "spring-hello-1.0.0.jar"]
+ENTRYPOINT ["java", "-jar", "spring-hello-1.0.0.jar"]
