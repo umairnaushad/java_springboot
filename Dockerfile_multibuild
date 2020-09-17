@@ -8,7 +8,7 @@ COPY src /build/src/
 RUN mvn package
 RUN pwd
 RUN ls
-COPY /target /testResults
+COPY target /testResults
 VOLUME /testResults
 
 
