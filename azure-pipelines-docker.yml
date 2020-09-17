@@ -31,6 +31,7 @@ stages:
     steps:
     - script: |
       docker build -f Dockerfile_multibuild -t $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID .
+      
       #docker run --name sonar-image-build --rm -d $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID
 #      docker cp sonar-image-build:/build/target $(System.DefaultWorkingDirectory)
       
