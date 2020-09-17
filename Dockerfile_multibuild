@@ -7,11 +7,11 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 RUN mvn package
-RUN  mkdir dockerVolume \
-    pwd \
-    ls
+RUN  mkdir dockerVolume
+RUN pwd
+RUN ls
     
-COPY target/ /dockerVolume/testResults
+COPY --from=MAVEN_BUILDER target/ /dockerVolume/testResults
 VOLUME /dockerVolume
 
 
