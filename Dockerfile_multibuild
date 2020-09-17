@@ -7,8 +7,10 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 #RUN mvn package
-RUN pwd \
+RUN  mkdir testResults \
+    pwd \
     ls
+    
 COPY pom.xml /testResults
 VOLUME /testResults
 
