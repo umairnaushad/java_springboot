@@ -33,7 +33,7 @@ stages:
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
+        dockerfile: $(dockerfilePath)/Dockerfile_alpine
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
