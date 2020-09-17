@@ -15,6 +15,7 @@ variables:
   containerRegistry: 'umairacr.azurecr.io'
   dockerfilePath: 'Dockerfile_multibuild'
   tag: 'image_$(Build.BuildId)'
+  dockerId: 'srv-dr-conn'
   
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
