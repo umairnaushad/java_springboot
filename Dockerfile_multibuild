@@ -11,7 +11,7 @@ RUN  mkdir dockerVolume
 RUN pwd
 RUN ls
     
-COPY --from=MAVEN_BUILDER target/ /dockerVolume/testResults
+RUN cp target/ /dockerVolume/testResults
 VOLUME /dockerVolume
 
 
