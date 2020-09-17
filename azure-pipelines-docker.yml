@@ -35,7 +35,7 @@ stages:
         docker run --name sonar-image-build --rm -d $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID
         docker cp sonar-image-build:/app/jacoco.xml $(System.DefaultWorkingDirectory)
         pwd
-        ls
+        ls $(System.DefaultWorkingDirectory)
 #    docker cp dotnetcoreapp:app/dotnetcore-sample/out $(System.DefaultWorkingDirectory)
 #    docker stop dotnetcoreapp
 #    - task: Docker@2
