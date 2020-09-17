@@ -33,7 +33,7 @@ stages:
         echo "TEST"
         docker build -f Dockerfile_multibuild -t $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID .
         docker run --name sonar-image-build --rm -d $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID
-        docker cp sonar-image-build:/jacoco.xml $(System.DefaultWorkingDirectory)
+        docker cp sonar-image-build:/app/jacoco.xml $(System.DefaultWorkingDirectory)
         pwd
         ls
 #    docker cp dotnetcoreapp:app/dotnetcore-sample/out $(System.DefaultWorkingDirectory)
