@@ -34,8 +34,13 @@ stages:
         docker build -f Dockerfile_multibuild -t $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID .
         docker run --name sonar-image-build --rm -d $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID
         docker cp sonar-image-build:/app/jacoco.xml $(System.DefaultWorkingDirectory)
+        docker stop sonar-image-build
         pwd
         ls $(System.DefaultWorkingDirectory)
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'JUnit'
+        testResultsFiles: 'jacoco.xml'
 #    docker cp dotnetcoreapp:app/dotnetcore-sample/out $(System.DefaultWorkingDirectory)
 #    docker stop dotnetcoreapp
 #    - task: Docker@2
