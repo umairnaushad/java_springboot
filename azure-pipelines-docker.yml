@@ -36,11 +36,11 @@ stages:
         docker cp sonar-image-build:/app/jacoco.xml $(System.DefaultWorkingDirectory)
         docker stop sonar-image-build
         pwd
-        ls $(System.DefaultWorkingDirectory)
+        ls -lart $(System.DefaultWorkingDirectory)
     - task: PublishTestResults@2
       inputs:
         testResultsFormat: 'JUnit'
-        testResultsFiles: 'jacoco.xml'
+        testResultsFiles: '$(System.DefaultWorkingDirectory)/jacoco.xml'
 #    docker cp dotnetcoreapp:app/dotnetcore-sample/out $(System.DefaultWorkingDirectory)
 #    docker stop dotnetcoreapp
 #    - task: Docker@2
