@@ -15,7 +15,7 @@ variables:
   containerRegistry: 'umairacr.azurecr.io'
   dockerfilePath: 'Dockerfile_multibuild'
   tag: 'image_$(Build.BuildId)'
-  dockerId: 'srv-dr-conn'
+  serviceConnectionDocker: 'srv-dr-conn'
   
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -30,9 +30,11 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - script: |
-       docker build -f Dockerfile_multibuild -t $(dockerId)/sonar-build:$BUILD_BUILDID .
-#   docker run --name dotnetcoreapp --rm -d $(dockerId)/dotnetcore-build:$BUILD_BUILDID
-#   docker cp dotnetcoreapp:app/dotnetcore-tests/TestResults $(System.DefaultWorkingDirectory)
+      docker build -f Dockerfile_multibuild -t $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID .
+      docker run --name sonar-build --rm -d $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID
+      docker cp sonar-build:app/build/target $(System.DefaultWorkingDirectory)
+      pwd
+      ls
 #    docker cp dotnetcoreapp:app/dotnetcore-sample/out $(System.DefaultWorkingDirectory)
 #    docker stop dotnetcoreapp
 #    - task: Docker@2
