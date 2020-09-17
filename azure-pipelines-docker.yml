@@ -37,10 +37,12 @@ stages:
         docker stop sonar-image-build
         pwd
         ls -lart $(System.DefaultWorkingDirectory)
-    - task: PublishTestResults@2
+    - task: PublishCodeCoverageResults@1
       inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: '$(System.DefaultWorkingDirectory)/jacoco.xml'
+        codeCoverageTool: 'JaCoCo'
+        summaryFileLocation: 'jacoco.xml'
+        pathToSources: 'src/main/java'
+        reportDirectory: '$(System.DefaultWorkingDirectory)'
 #    docker cp dotnetcoreapp:app/dotnetcore-sample/out $(System.DefaultWorkingDirectory)
 #    docker stop dotnetcoreapp
 #    - task: Docker@2
