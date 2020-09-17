@@ -6,12 +6,12 @@ WORKDIR /build/
 COPY pom.xml /build/
 COPY src /build/src/
 
-#RUN mvn package
+RUN mvn package
 RUN  mkdir dockerVolume \
     pwd \
     ls
     
-COPY pom.xml /dockerVolume/testResults
+COPY target/ /dockerVolume/testResults
 VOLUME /dockerVolume
 
 
