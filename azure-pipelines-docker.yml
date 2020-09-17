@@ -33,8 +33,7 @@ stages:
       docker build -f Dockerfile_multibuild -t $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID .
       docker run --name sonar-build --rm -d $(serviceConnectionDocker)/sonar-build:$BUILD_BUILDID
       docker cp sonar-build:app/build/target $(System.DefaultWorkingDirectory)
-      pwd
-      ls
+      
 #    docker cp dotnetcoreapp:app/dotnetcore-sample/out $(System.DefaultWorkingDirectory)
 #    docker stop dotnetcoreapp
 #    - task: Docker@2
